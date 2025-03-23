@@ -1,3 +1,4 @@
 pandas
 pyspark
 jupyter
+azure-eventhub
