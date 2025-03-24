@@ -2,6 +2,7 @@
 from azure.eventhub import EventHubProducerClient, EventData
 import csv
 import json
+import glob
 
 from utilities import EVENT_HUB_CONNECTION_STR, EVENT_HUB_NAME
 
@@ -12,20 +13,24 @@ def main():
         eventhub_name=EVENT_HUB_NAME
     )
 
-    with open('data/weather_data_batch1.csv', 'r') as f:
-        csv_reader = csv.reader(f)
+    data_files = glob.glob('data/*_new.csv')
 
-        for i, row in enumerate(csv_reader):
-            # skip the header
-            if i == 0:
-                continue
+    for file in data_files:
 
-            # print(row)
-            event_data = json.dumps(row)
+        with open(file, 'r') as f:
+            csv_reader = csv.reader(f)
 
-            # send to Azure Event Hub
-            print(f'Sending Row {i+1} to Azure Event Hub named {EVENT_HUB_NAME}...')
-            producer_client.send_event(EventData(event_data))
+            for i, row in enumerate(csv_reader):
+                # skip the header
+                if i == 0:
+                    continue
+
+                # print(row)
+                event_data = json.dumps(row)
+
+                # send to Azure Event Hub
+                print(f'Sending Row {i+1} to Azure Event Hub named {EVENT_HUB_NAME}...')
+                producer_client.send_event(EventData(event_data))
 
     producer_client.close()
 
