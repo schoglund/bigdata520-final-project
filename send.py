@@ -16,6 +16,7 @@ def main():
     data_files = glob.glob('data/*_new.csv')
 
     for file in data_files:
+        print(f"----Working on file {file}----")
 
         with open(file, 'r') as f:
             csv_reader = csv.reader(f)
