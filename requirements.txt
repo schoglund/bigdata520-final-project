@@ -2,3 +2,5 @@ pandas
 pyspark
 jupyter
 azure-eventhub
+fastparquet
+folium
