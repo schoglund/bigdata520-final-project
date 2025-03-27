@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d24b44bf63de5c0a206438099bff790d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_d24b44bf63de5c0a206438099bff790d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d24b44bf63de5c0a206438099bff790d = L.map(
+                "map_d24b44bf63de5c0a206438099bff790d",
+                {
+                    center: [39.83, -98.58],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_382080598390bdda46ac19ad0cdeffbb = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_382080598390bdda46ac19ad0cdeffbb.addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                _getDisplayDateFormat: function(date){
+                    var newdate = new moment(date);
+                    console.log(newdate)
+                    return newdate.format("YYYY-MM-DD");
+                }
+            });
+            map_d24b44bf63de5c0a206438099bff790d.timeDimension = L.timeDimension(
+                {
+                    period: "P1D",
+                }
+            );
+            var timeDimensionControl = new L.Control.TimeDimensionCustom(
+                {
+  "position": "bottomleft",
+  "minSpeed": 0.1,
+  "maxSpeed": 1,
+  "autoPlay": false,
+  "loopButton": true,
+  "timeSliderDragUpdate": true,
+  "speedSlider": true,
+  "playerOptions": {
+  "transitionTime": 200,
+  "loop": false,
+  "startOver": true,
+},
+}
+            );
+            map_d24b44bf63de5c0a206438099bff790d.addControl(this.timeDimensionControl);
+
+            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-17", "2026-01-18"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>62.57</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 7th week of ski season, which is <b> Jan 12, 2026 to Jan 18, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>62.10</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 17th week of ski season, which is <b> Mar 23, 2026 to Mar 29, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>49.55</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 10th week of ski season, which is <b> Feb 02, 2026 to Feb 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>61.94</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 17th week of ski season, which is <b> Mar 23, 2026 to Mar 29, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-10", "2026-01-11"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>56.81</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Clouds</b> during the 6th week of ski season, which is <b> Jan 05, 2026 to Jan 11, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-01-19", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-24", "2026-01-25"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>46.71</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Haze</b> during the 8th week of ski season, which is <b> Jan 19, 2026 to Jan 25, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>39.38</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 20th week of ski season, which is <b> Apr 13, 2026 to Apr 19, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>43.74</b>/100</h2><br>In the Rockies region, you can expect the weather to be <b>Clear</b> during the 14th week of ski season, which is <b> Mar 02, 2026 to Mar 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-13", "2025-12-14"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>32.39</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 2th week of ski season, which is <b> Dec 08, 2025 to Dec 14, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-01-19", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-24", "2026-01-25"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>32.50</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 8th week of ski season, which is <b> Jan 19, 2026 to Jan 25, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>39.60</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 11th week of ski season, which is <b> Feb 09, 2026 to Feb 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>43.90</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 5th week of ski season, which is <b> Dec 29, 2025 to Jan 04, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>55.07</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 18th week of ski season, which is <b> Mar 30, 2026 to Apr 05, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>49.23</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 18th week of ski season, which is <b> Mar 30, 2026 to Apr 05, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-10", "2026-01-11"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>71.01</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 6th week of ski season, which is <b> Jan 05, 2026 to Jan 11, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-10", "2026-01-11"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>36.39</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 6th week of ski season, which is <b> Jan 05, 2026 to Jan 11, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>57.57</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 10th week of ski season, which is <b> Feb 02, 2026 to Feb 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-10", "2026-01-11"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>45.03</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 6th week of ski season, which is <b> Jan 05, 2026 to Jan 11, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>60.64</b>/100</h2><br>In the Midwest region, you can expect the weather to be <b>Clear</b> during the 20th week of ski season, which is <b> Apr 13, 2026 to Apr 19, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>58.51</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Snow</b> during the 12th week of ski season, which is <b> Feb 16, 2026 to Feb 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>59.31</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 11th week of ski season, which is <b> Feb 09, 2026 to Feb 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>30.88</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 12th week of ski season, which is <b> Feb 16, 2026 to Feb 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>52.25</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Clouds</b> during the 9th week of ski season, which is <b> Jan 26, 2026 to Feb 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>60.04</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 20th week of ski season, which is <b> Apr 13, 2026 to Apr 19, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>58.30</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 15th week of ski season, which is <b> Mar 09, 2026 to Mar 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>53.66</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 13th week of ski season, which is <b> Feb 23, 2026 to Mar 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>57.68</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 11th week of ski season, which is <b> Feb 09, 2026 to Feb 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-17", "2026-01-18"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>35.05</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 7th week of ski season, which is <b> Jan 12, 2026 to Jan 18, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>40.07</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 17th week of ski season, which is <b> Mar 23, 2026 to Mar 29, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>56.56</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 14th week of ski season, which is <b> Mar 02, 2026 to Mar 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>53.76</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 20th week of ski season, which is <b> Apr 13, 2026 to Apr 19, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-13", "2025-12-14"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>52.28</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Clouds</b> during the 2th week of ski season, which is <b> Dec 08, 2025 to Dec 14, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>36.48</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 14th week of ski season, which is <b> Mar 02, 2026 to Mar 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-13", "2025-12-14"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>47.99</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 2th week of ski season, which is <b> Dec 08, 2025 to Dec 14, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>37.26</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 10th week of ski season, which is <b> Feb 02, 2026 to Feb 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>39.37</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 5th week of ski season, which is <b> Dec 29, 2025 to Jan 04, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>40.45</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 17th week of ski season, which is <b> Mar 23, 2026 to Mar 29, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-13", "2025-12-14"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>69.81</b>/100</h2><br>In the Midwest region, you can expect the weather to be <b>Clear</b> during the 2th week of ski season, which is <b> Dec 08, 2025 to Dec 14, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-10", "2026-01-11"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>29.91</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 6th week of ski season, which is <b> Jan 05, 2026 to Jan 11, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>71.10</b>/100</h2><br>In the Midwest region, you can expect the weather to be <b>Clear</b> during the 14th week of ski season, which is <b> Mar 02, 2026 to Mar 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>64.33</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Clouds</b> during the 5th week of ski season, which is <b> Dec 29, 2025 to Jan 04, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>58.42</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Snow</b> during the 15th week of ski season, which is <b> Mar 09, 2026 to Mar 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>53.70</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 16th week of ski season, which is <b> Mar 16, 2026 to Mar 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>62.65</b>/100</h2><br>In the PNW region, you can expect the weather to be <b>Clear</b> during the 9th week of ski season, which is <b> Jan 26, 2026 to Feb 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-17", "2026-01-18"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>53.06</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Snow</b> during the 7th week of ski season, which is <b> Jan 12, 2026 to Jan 18, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>49.28</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Snow</b> during the 5th week of ski season, which is <b> Dec 29, 2025 to Jan 04, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>40.24</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 15th week of ski season, which is <b> Mar 09, 2026 to Mar 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>55.87</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 13th week of ski season, which is <b> Feb 23, 2026 to Mar 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>38.83</b>/100</h2><br>In the Rockies region, you can expect the weather to be <b>Clear</b> during the 9th week of ski season, which is <b> Jan 26, 2026 to Feb 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>47.04</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Clouds</b> during the 4th week of ski season, which is <b> Dec 22, 2025 to Dec 28, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-17", "2026-01-18"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>46.04</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 7th week of ski season, which is <b> Jan 12, 2026 to Jan 18, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>51.01</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 17th week of ski season, which is <b> Mar 23, 2026 to Mar 29, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>47.35</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Rain</b> during the 19th week of ski season, which is <b> Apr 06, 2026 to Apr 12, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20", "2025-12-21"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>41.39</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 3th week of ski season, which is <b> Dec 15, 2025 to Dec 21, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>34.04</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 5th week of ski season, which is <b> Dec 29, 2025 to Jan 04, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>62.22</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 9th week of ski season, which is <b> Jan 26, 2026 to Feb 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>62.26</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Rain</b> during the 18th week of ski season, which is <b> Mar 30, 2026 to Apr 05, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20", "2025-12-21"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>61.16</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Clouds</b> during the 3th week of ski season, which is <b> Dec 15, 2025 to Dec 21, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>61.81</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 14th week of ski season, which is <b> Mar 02, 2026 to Mar 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>37.99</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 1th week of ski season, which is <b> Dec 01, 2025 to Dec 07, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>63.34</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 14th week of ski season, which is <b> Mar 02, 2026 to Mar 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>46.68</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Snow</b> during the 15th week of ski season, which is <b> Mar 09, 2026 to Mar 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-17", "2026-01-18"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>28.02</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 7th week of ski season, which is <b> Jan 12, 2026 to Jan 18, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>41.74</b>/100</h2><br>In the Rockies region, you can expect the weather to be <b>Clear</b> during the 10th week of ski season, which is <b> Feb 02, 2026 to Feb 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>33.08</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 5th week of ski season, which is <b> Dec 29, 2025 to Jan 04, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>54.82</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 4th week of ski season, which is <b> Dec 22, 2025 to Dec 28, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20", "2025-12-21"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>56.79</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 3th week of ski season, which is <b> Dec 15, 2025 to Dec 21, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>52.28</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 20th week of ski season, which is <b> Apr 13, 2026 to Apr 19, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20", "2025-12-21"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>38.28</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 3th week of ski season, which is <b> Dec 15, 2025 to Dec 21, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-01-19", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-24", "2026-01-25"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>34.70</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 8th week of ski season, which is <b> Jan 19, 2026 to Jan 25, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20", "2025-12-21"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>54.23</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Clouds</b> during the 3th week of ski season, which is <b> Dec 15, 2025 to Dec 21, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>60.45</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 12th week of ski season, which is <b> Feb 16, 2026 to Feb 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-01-19", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-24", "2026-01-25"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>55.53</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Snow</b> during the 8th week of ski season, which is <b> Jan 19, 2026 to Jan 25, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-17", "2026-01-18"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>27.67</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 7th week of ski season, which is <b> Jan 12, 2026 to Jan 18, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>76.75</b>/100</h2><br>In the Midwest region, you can expect the weather to be <b>Clear</b> during the 15th week of ski season, which is <b> Mar 09, 2026 to Mar 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-10", "2026-01-11"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>51.20</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 6th week of ski season, which is <b> Jan 05, 2026 to Jan 11, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>32.79</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 4th week of ski season, which is <b> Dec 22, 2025 to Dec 28, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>53.00</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 4th week of ski season, which is <b> Dec 22, 2025 to Dec 28, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>55.90</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 17th week of ski season, which is <b> Mar 23, 2026 to Mar 29, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-10", "2026-01-11"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>31.67</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 6th week of ski season, which is <b> Jan 05, 2026 to Jan 11, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>61.29</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 17th week of ski season, which is <b> Mar 23, 2026 to Mar 29, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>37.55</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 15th week of ski season, which is <b> Mar 09, 2026 to Mar 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>44.84</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 19th week of ski season, which is <b> Apr 06, 2026 to Apr 12, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>39.79</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 20th week of ski season, which is <b> Apr 13, 2026 to Apr 19, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>55.14</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 1th week of ski season, which is <b> Dec 01, 2025 to Dec 07, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-17", "2026-01-18"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>46.18</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 7th week of ski season, which is <b> Jan 12, 2026 to Jan 18, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>42.52</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Mist</b> during the 10th week of ski season, which is <b> Feb 02, 2026 to Feb 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>40.02</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 14th week of ski season, which is <b> Mar 02, 2026 to Mar 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>44.05</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Mist</b> during the 5th week of ski season, which is <b> Dec 29, 2025 to Jan 04, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>65.04</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 16th week of ski season, which is <b> Mar 16, 2026 to Mar 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>32.80</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 11th week of ski season, which is <b> Feb 09, 2026 to Feb 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-17", "2026-01-18"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>63.95</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Clouds</b> during the 7th week of ski season, which is <b> Jan 12, 2026 to Jan 18, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-13", "2025-12-14"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>56.84</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 2th week of ski season, which is <b> Dec 08, 2025 to Dec 14, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>43.03</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 19th week of ski season, which is <b> Apr 06, 2026 to Apr 12, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>43.14</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 13th week of ski season, which is <b> Feb 23, 2026 to Mar 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>64.25</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 1th week of ski season, which is <b> Dec 01, 2025 to Dec 07, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>36.84</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 11th week of ski season, which is <b> Feb 09, 2026 to Feb 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>40.26</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 9th week of ski season, which is <b> Jan 26, 2026 to Feb 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20", "2025-12-21"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>61.95</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 3th week of ski season, which is <b> Dec 15, 2025 to Dec 21, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>67.42</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 1th week of ski season, which is <b> Dec 01, 2025 to Dec 07, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>70.01</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 13th week of ski season, which is <b> Feb 23, 2026 to Mar 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>38.22</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Snow</b> during the 12th week of ski season, which is <b> Feb 16, 2026 to Feb 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>44.57</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Rain</b> during the 17th week of ski season, which is <b> Mar 23, 2026 to Mar 29, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>50.53</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 4th week of ski season, which is <b> Dec 22, 2025 to Dec 28, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20", "2025-12-21"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>35.16</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 3th week of ski season, which is <b> Dec 15, 2025 to Dec 21, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-01-19", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-24", "2026-01-25"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>50.61</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 8th week of ski season, which is <b> Jan 19, 2026 to Jan 25, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>37.67</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 1th week of ski season, which is <b> Dec 01, 2025 to Dec 07, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>62.98</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Snow</b> during the 12th week of ski season, which is <b> Feb 16, 2026 to Feb 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>46.41</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 1th week of ski season, which is <b> Dec 01, 2025 to Dec 07, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>62.63</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 13th week of ski season, which is <b> Feb 23, 2026 to Mar 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>60.04</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 19th week of ski season, which is <b> Apr 06, 2026 to Apr 12, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>43.45</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 12th week of ski season, which is <b> Feb 16, 2026 to Feb 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>57.67</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 11th week of ski season, which is <b> Feb 09, 2026 to Feb 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>55.10</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 16th week of ski season, which is <b> Mar 16, 2026 to Mar 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>42.69</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 9th week of ski season, which is <b> Jan 26, 2026 to Feb 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>49.14</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 11th week of ski season, which is <b> Feb 09, 2026 to Feb 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>40.84</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 13th week of ski season, which is <b> Feb 23, 2026 to Mar 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>38.93</b>/100</h2><br>In the Rockies region, you can expect the weather to be <b>Clear</b> during the 9th week of ski season, which is <b> Jan 26, 2026 to Feb 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-01-19", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-24", "2026-01-25"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>71.10</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 8th week of ski season, which is <b> Jan 19, 2026 to Jan 25, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>54.35</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 18th week of ski season, which is <b> Mar 30, 2026 to Apr 05, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>57.39</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 14th week of ski season, which is <b> Mar 02, 2026 to Mar 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>48.20</b>/100</h2><br>In the Rockies region, you can expect the weather to be <b>Clear</b> during the 18th week of ski season, which is <b> Mar 30, 2026 to Apr 05, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>54.15</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 18th week of ski season, which is <b> Mar 30, 2026 to Apr 05, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>64.66</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 19th week of ski season, which is <b> Apr 06, 2026 to Apr 12, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-01-19", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-24", "2026-01-25"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>32.74</b>/100</h2><br>In the Rockies region, you can expect the weather to be <b>Clear</b> during the 8th week of ski season, which is <b> Jan 19, 2026 to Jan 25, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>49.49</b>/100</h2><br>In the Rockies region, you can expect the weather to be <b>Clear</b> during the 13th week of ski season, which is <b> Feb 23, 2026 to Mar 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>48.21</b>/100</h2><br>In the Rockies region, you can expect the weather to be <b>Clear</b> during the 19th week of ski season, which is <b> Apr 06, 2026 to Apr 12, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-13", "2025-12-14"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>34.33</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 2th week of ski season, which is <b> Dec 08, 2025 to Dec 14, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>61.16</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 13th week of ski season, which is <b> Feb 23, 2026 to Mar 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-20", "2025-12-21"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>48.26</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 3th week of ski season, which is <b> Dec 15, 2025 to Dec 21, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>61.41</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 1th week of ski season, which is <b> Dec 01, 2025 to Dec 07, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>42.20</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Snow</b> during the 5th week of ski season, which is <b> Dec 29, 2025 to Jan 04, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>45.27</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Rain</b> during the 18th week of ski season, which is <b> Mar 30, 2026 to Apr 05, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>53.81</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Snow</b> during the 12th week of ski season, which is <b> Feb 16, 2026 to Feb 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>55.03</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 10th week of ski season, which is <b> Feb 02, 2026 to Feb 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>73.17</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 18th week of ski season, which is <b> Mar 30, 2026 to Apr 05, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>41.22</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 1th week of ski season, which is <b> Dec 01, 2025 to Dec 07, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-10", "2026-01-11"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>46.63</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 6th week of ski season, which is <b> Jan 05, 2026 to Jan 11, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>68.34</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 16th week of ski season, which is <b> Mar 16, 2026 to Mar 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>43.31</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 20th week of ski season, which is <b> Apr 13, 2026 to Apr 19, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>50.36</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 12th week of ski season, which is <b> Feb 16, 2026 to Feb 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>60.23</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 16th week of ski season, which is <b> Mar 16, 2026 to Mar 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>52.07</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 19th week of ski season, which is <b> Apr 06, 2026 to Apr 12, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>62.81</b>/100</h2><br>In the Midwest region, you can expect the weather to be <b>Clear</b> during the 19th week of ski season, which is <b> Apr 06, 2026 to Apr 12, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.766, 38.487]}, "properties": {"times": ["2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Copper Mountain</h1><h2>Score: <b>34.64</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 11th week of ski season, which is <b> Feb 09, 2026 to Feb 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28"], "icon": "circle", "style": {"color": "#EFBF04", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>63.84</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 4th week of ski season, which is <b> Dec 22, 2025 to Dec 28, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-120.081, 38.8]}, "properties": {"times": ["2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Sierra-at-Tahoe</h1><h2>Score: <b>48.39</b>/100</h2><br>In the Northern California region, you can expect the weather to have <b>Rain</b> during the 4th week of ski season, which is <b> Dec 22, 2025 to Dec 28, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-13", "2025-12-14"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>54.10</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 2th week of ski season, which is <b> Dec 08, 2025 to Dec 14, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>63.08</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 15th week of ski season, which is <b> Mar 09, 2026 to Mar 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>50.60</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 15th week of ski season, which is <b> Mar 09, 2026 to Mar 15, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>44.71</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 16th week of ski season, which is <b> Mar 16, 2026 to Mar 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-01-19", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-24", "2026-01-25"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>51.29</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 8th week of ski season, which is <b> Jan 19, 2026 to Jan 25, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>47.36</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 16th week of ski season, which is <b> Mar 16, 2026 to Mar 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.417, 47.424]}, "properties": {"times": ["2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22"], "icon": "circle", "style": {"color": "#CD7F32", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>The Summit at Snoqualmie</h1><h2>Score: <b>60.57</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Snow</b> during the 16th week of ski season, which is <b> Mar 16, 2026 to Mar 22, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2025-12-22", "2025-12-23", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-27", "2025-12-28"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>33.56</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Snow</b> during the 4th week of ski season, which is <b> Dec 22, 2025 to Dec 28, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-111.656, 40.581]}, "properties": {"times": ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Snowbird</h1><h2>Score: <b>35.62</b>/100</h2><br>In the Rockies region, you can expect the weather to have <b>Clouds</b> during the 10th week of ski season, which is <b> Feb 02, 2026 to Feb 08, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-119.032, 37.631]}, "properties": {"times": ["2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mammoth Mountain</h1><h2>Score: <b>47.11</b>/100</h2><br>In the Northern California region, you can expect the weather to be <b>Clear</b> during the 9th week of ski season, which is <b> Jan 26, 2026 to Feb 01, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-121.678, 44.002]}, "properties": {"times": ["2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-13", "2025-12-14"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Mt. Bachelor</h1><h2>Score: <b>36.05</b>/100</h2><br>In the PNW region, you can expect the weather to have <b>Clouds</b> during the 2th week of ski season, which is <b> Dec 08, 2025 to Dec 14, 2025</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.939, 45.159]}, "properties": {"times": ["2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19"], "icon": "circle", "style": {"color": "#FFFFFF", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Mountain</h1><h2>Score: <b>38.52</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 20th week of ski season, which is <b> Apr 13, 2026 to Apr 19, 2026</b>."}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-84.922, 45.469]}, "properties": {"times": ["2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08"], "icon": "circle", "style": {"color": "#A9A9A9", "radius": 20, "font-size": "14px"}, "tooltip": "<h1>Boyne Highlands</h1><h2>Score: <b>55.26</b>/100</h2><br>In the Midwest region, you can expect the weather to have <b>Clouds</b> during the 10th week of ski season, which is <b> Feb 02, 2026 to Feb 08, 2026</b>."}}]}, {
+                    pointToLayer: function (feature, latLng) {
+                        if (feature.properties.icon == 'marker') {
+                            if(feature.properties.iconstyle){
+                                return new L.Marker(latLng, {
+                                    icon: L.icon(feature.properties.iconstyle)});
+                            }
+                            //else
+                            return new L.Marker(latLng);
+                        }
+                        if (feature.properties.icon == 'circle') {
+                            if (feature.properties.iconstyle) {
+                                return new L.circleMarker(latLng, feature.properties.iconstyle)
+                                };
+                            //else
+                            return new L.circleMarker(latLng);
+                        }
+                        //else
+
+                        return new L.Marker(latLng);
+                    },
+                    style: function (feature) {
+                        return feature.properties.style;
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties.popup) {
+                        layer.bindPopup(feature.properties.popup);
+                        }
+                        if (feature.properties.tooltip) {
+                        layer.bindTooltip(feature.properties.tooltip);
+                        }
+                    }
+                })
+
+            var timestamped_geo_json_9f3dd8c5bc1e517e3cd98b99ecf5cf10 = L.timeDimension.layer.geoJson(
+                geoJsonLayer,
+                {
+                    updateTimeDimension: true,
+                    addlastPoint: true,
+                    duration: "P1D",
+                }
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var marker_a300c5ba8f590350a51dc13d0e7acabc = L.marker(
+                [47.424, -121.417],
+                {
+}
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var icon_4edc6069c3cc27af476a376c059a41f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "person-skiing",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_38fe3ad3c2bc163acb2d42293efae026 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_45438234399fb6111a1f6873b3992f8a = $(`<div id="html_45438234399fb6111a1f6873b3992f8a" style="width: 100.0%; height: 100.0%;">Region: PNW Timezone: America/Los_Angeles</div>`)[0];
+                popup_38fe3ad3c2bc163acb2d42293efae026.setContent(html_45438234399fb6111a1f6873b3992f8a);
+            
+        
+
+        marker_a300c5ba8f590350a51dc13d0e7acabc.bindPopup(popup_38fe3ad3c2bc163acb2d42293efae026)
+        ;
+
+        
+    
+    
+            marker_a300c5ba8f590350a51dc13d0e7acabc.bindTooltip(
+                `<div>
+                     The Summit at Snoqualmie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a300c5ba8f590350a51dc13d0e7acabc.setIcon(icon_4edc6069c3cc27af476a376c059a41f7);
+            
+    
+            var marker_b51c4057e5181e136905db0b8752185c = L.marker(
+                [44.002, -121.678],
+                {
+}
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var icon_22ff997ef5f29300463afeaaf4c96c4e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "person-skiing",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec5873e6b51dbea66e01528b87b730d8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d4d5aea98ed22cd2474474ec5235c529 = $(`<div id="html_d4d5aea98ed22cd2474474ec5235c529" style="width: 100.0%; height: 100.0%;">Region: PNW Timezone: America/Los_Angeles</div>`)[0];
+                popup_ec5873e6b51dbea66e01528b87b730d8.setContent(html_d4d5aea98ed22cd2474474ec5235c529);
+            
+        
+
+        marker_b51c4057e5181e136905db0b8752185c.bindPopup(popup_ec5873e6b51dbea66e01528b87b730d8)
+        ;
+
+        
+    
+    
+            marker_b51c4057e5181e136905db0b8752185c.bindTooltip(
+                `<div>
+                     Mt. Bachelor
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b51c4057e5181e136905db0b8752185c.setIcon(icon_22ff997ef5f29300463afeaaf4c96c4e);
+            
+    
+            var marker_dc4a4bbadf1e127e0b6b8c27ded7a11e = L.marker(
+                [45.159, -84.939],
+                {
+}
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var icon_9a42874fae08370995bc0ac58dafe6c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "person-skiing",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8606aa42cadff082dc02ff56770af572 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4e2582c011d199bdc005e1275175be24 = $(`<div id="html_4e2582c011d199bdc005e1275175be24" style="width: 100.0%; height: 100.0%;">Region: Midwest Timezone: America/Detroit</div>`)[0];
+                popup_8606aa42cadff082dc02ff56770af572.setContent(html_4e2582c011d199bdc005e1275175be24);
+            
+        
+
+        marker_dc4a4bbadf1e127e0b6b8c27ded7a11e.bindPopup(popup_8606aa42cadff082dc02ff56770af572)
+        ;
+
+        
+    
+    
+            marker_dc4a4bbadf1e127e0b6b8c27ded7a11e.bindTooltip(
+                `<div>
+                     Boyne Mountain
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dc4a4bbadf1e127e0b6b8c27ded7a11e.setIcon(icon_9a42874fae08370995bc0ac58dafe6c3);
+            
+    
+            var marker_1600dcd30303bac6a4f8e98faa33143c = L.marker(
+                [45.469, -84.922],
+                {
+}
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var icon_6c9a932e7caa2064fdab44d93c4f7792 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "person-skiing",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_14f7ca52d3544398bf36e65d42beb4cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_100724e3d433c46750897459b59f056d = $(`<div id="html_100724e3d433c46750897459b59f056d" style="width: 100.0%; height: 100.0%;">Region: Midwest Timezone: America/Detroit</div>`)[0];
+                popup_14f7ca52d3544398bf36e65d42beb4cc.setContent(html_100724e3d433c46750897459b59f056d);
+            
+        
+
+        marker_1600dcd30303bac6a4f8e98faa33143c.bindPopup(popup_14f7ca52d3544398bf36e65d42beb4cc)
+        ;
+
+        
+    
+    
+            marker_1600dcd30303bac6a4f8e98faa33143c.bindTooltip(
+                `<div>
+                     Boyne Highlands
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1600dcd30303bac6a4f8e98faa33143c.setIcon(icon_6c9a932e7caa2064fdab44d93c4f7792);
+            
+    
+            var marker_ddb8912dc7cd1297150c881ed06c612b = L.marker(
+                [37.631, -119.032],
+                {
+}
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var icon_aa376fa1da5233628df2671ba316e775 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "person-skiing",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cbfcf01bdaa25087e45491f9f0f0f601 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a2859b0d314a1c607e23f059a2b3215 = $(`<div id="html_4a2859b0d314a1c607e23f059a2b3215" style="width: 100.0%; height: 100.0%;">Region: Northern California Timezone: America/Los_Angeles</div>`)[0];
+                popup_cbfcf01bdaa25087e45491f9f0f0f601.setContent(html_4a2859b0d314a1c607e23f059a2b3215);
+            
+        
+
+        marker_ddb8912dc7cd1297150c881ed06c612b.bindPopup(popup_cbfcf01bdaa25087e45491f9f0f0f601)
+        ;
+
+        
+    
+    
+            marker_ddb8912dc7cd1297150c881ed06c612b.bindTooltip(
+                `<div>
+                     Mammoth Mountain
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ddb8912dc7cd1297150c881ed06c612b.setIcon(icon_aa376fa1da5233628df2671ba316e775);
+            
+    
+            var marker_f4668a9a03d9f330ad71a0daeab0e30e = L.marker(
+                [38.8, -120.081],
+                {
+}
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var icon_27cac2fbf1de1defb6e7a67605a0b7cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "person-skiing",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0dfc7ba620e468850a4f312a9eadb63f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2ebc1e9a7668c6573dfdf3174fe6b758 = $(`<div id="html_2ebc1e9a7668c6573dfdf3174fe6b758" style="width: 100.0%; height: 100.0%;">Region: Northern California Timezone: America/Los_Angeles</div>`)[0];
+                popup_0dfc7ba620e468850a4f312a9eadb63f.setContent(html_2ebc1e9a7668c6573dfdf3174fe6b758);
+            
+        
+
+        marker_f4668a9a03d9f330ad71a0daeab0e30e.bindPopup(popup_0dfc7ba620e468850a4f312a9eadb63f)
+        ;
+
+        
+    
+    
+            marker_f4668a9a03d9f330ad71a0daeab0e30e.bindTooltip(
+                `<div>
+                     Sierra-at-Tahoe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f4668a9a03d9f330ad71a0daeab0e30e.setIcon(icon_27cac2fbf1de1defb6e7a67605a0b7cd);
+            
+    
+            var marker_b7799fba659752dc54633260262e3c29 = L.marker(
+                [38.487, -105.766],
+                {
+}
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var icon_f323debafdf984067158beaf81966299 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "person-skiing",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0391579ee18f51ad51cf06a98fac7267 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74e5a32bfcd8c566cbdefb9ccd45052e = $(`<div id="html_74e5a32bfcd8c566cbdefb9ccd45052e" style="width: 100.0%; height: 100.0%;">Region: Rockies Timezone: America/Denver</div>`)[0];
+                popup_0391579ee18f51ad51cf06a98fac7267.setContent(html_74e5a32bfcd8c566cbdefb9ccd45052e);
+            
+        
+
+        marker_b7799fba659752dc54633260262e3c29.bindPopup(popup_0391579ee18f51ad51cf06a98fac7267)
+        ;
+
+        
+    
+    
+            marker_b7799fba659752dc54633260262e3c29.bindTooltip(
+                `<div>
+                     Copper Mountain
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b7799fba659752dc54633260262e3c29.setIcon(icon_f323debafdf984067158beaf81966299);
+            
+    
+            var marker_bd28eec56b83a1667bc0b5d03201e7c4 = L.marker(
+                [40.581, -111.656],
+                {
+}
+            ).addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+            var icon_f7dd60fb881120c83034f0fd204366e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "person-skiing",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dace5c8f93d5abe147ef66671b0512b0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed9d744b6fa0d1d3e5f65dc3d3784458 = $(`<div id="html_ed9d744b6fa0d1d3e5f65dc3d3784458" style="width: 100.0%; height: 100.0%;">Region: Rockies Timezone: America/Denver</div>`)[0];
+                popup_dace5c8f93d5abe147ef66671b0512b0.setContent(html_ed9d744b6fa0d1d3e5f65dc3d3784458);
+            
+        
+
+        marker_bd28eec56b83a1667bc0b5d03201e7c4.bindPopup(popup_dace5c8f93d5abe147ef66671b0512b0)
+        ;
+
+        
+    
+    
+            marker_bd28eec56b83a1667bc0b5d03201e7c4.bindTooltip(
+                `<div>
+                     Snowbird
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bd28eec56b83a1667bc0b5d03201e7c4.setIcon(icon_f7dd60fb881120c83034f0fd204366e2);
+            
+    
+            tile_layer_382080598390bdda46ac19ad0cdeffbb.addTo(map_d24b44bf63de5c0a206438099bff790d);
+        
+    
+                marker_a300c5ba8f590350a51dc13d0e7acabc.setIcon(icon_4edc6069c3cc27af476a376c059a41f7);
+            
+    
+                marker_b51c4057e5181e136905db0b8752185c.setIcon(icon_22ff997ef5f29300463afeaaf4c96c4e);
+            
+    
+                marker_dc4a4bbadf1e127e0b6b8c27ded7a11e.setIcon(icon_9a42874fae08370995bc0ac58dafe6c3);
+            
+    
+                marker_1600dcd30303bac6a4f8e98faa33143c.setIcon(icon_6c9a932e7caa2064fdab44d93c4f7792);
+            
+    
+                marker_ddb8912dc7cd1297150c881ed06c612b.setIcon(icon_aa376fa1da5233628df2671ba316e775);
+            
+    
+                marker_f4668a9a03d9f330ad71a0daeab0e30e.setIcon(icon_27cac2fbf1de1defb6e7a67605a0b7cd);
+            
+    
+                marker_b7799fba659752dc54633260262e3c29.setIcon(icon_f323debafdf984067158beaf81966299);
+            
+    
+                marker_bd28eec56b83a1667bc0b5d03201e7c4.setIcon(icon_f7dd60fb881120c83034f0fd204366e2);
+            
+</script>
+</html>
